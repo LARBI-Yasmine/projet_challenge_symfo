@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Editor;
 
 use App\Entity\Event;
 use App\Form\EventType;
@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/event')]
+#[Route('/admin/editor/event')]
 class EventController extends AbstractController
 {
     #[Route('/', name: 'app_event_index', methods: ['GET'])]
