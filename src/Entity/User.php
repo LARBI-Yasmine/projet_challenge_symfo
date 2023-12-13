@@ -35,8 +35,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $lastname = null;
 
-    #[ORM\Column]
-    private ?bool $is_editor = null;
 
     public function getId(): ?int
     {
@@ -128,18 +126,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setLastname(string $lastname): static
     {
         $this->lastname = $lastname;
-
-        return $this;
-    }
-
-    public function isIsEditor(): ?bool
-    {
-        return $this->is_editor;
-    }
-
-    public function setIsEditor(bool $is_editor): static
-    {
-        $this->is_editor = $is_editor;
 
         return $this;
     }
