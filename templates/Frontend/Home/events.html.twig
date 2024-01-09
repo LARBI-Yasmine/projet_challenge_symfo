@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Mes Évènements
+{% endblock %}
+
+{% block body %}
+	<section>
+		{% for event in events %}
+			<h3>{{ event.name }}</h3>
+			<form action="/eventWithdraw" method="POST">
+				<button>
+					Se désister
+					<input type="hidden" name="token" value="{{ csrf_token('withdraw' ~ event.id) }}">
+					<input type="hidden" name="id" value="{{ event.id }}">
+				</button>
+			</form>
+		{% endfor %}
+	</section>
+
+{% endblock %}

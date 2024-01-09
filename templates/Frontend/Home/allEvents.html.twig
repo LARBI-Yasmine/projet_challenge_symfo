@@ -8,9 +8,6 @@
 		<button>
 			<a href="/logout">Déconnexion</a>
 		</button>
-		<button>
-			<a href="/events">Gestion Events</a>
-		</button>
 	{% else %}
 		<button>
 			<a href="/login">Connexion</a>
@@ -31,7 +28,7 @@
 									{% endfor %}
 								</h4>
 								{% if (user) %}
-									<form action="eventParticipate" method="POST">
+									<form action="/eventParticipate" method="POST">
 										<button>
 											Participer
 										</button>
@@ -50,11 +47,9 @@
 		</div>
 	</section>
 	<div>
-		{% if (user) %}
-			<button>
-				<a href="/allEvents">Voir tous les évènements</a>
-			</button>
-		{% endif %}
+		<button>
+			<a href="/">Retour</a>
+		</button>
 	</div>
 	{% if (not user) %}
 		<section>

@@ -149,6 +149,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getEvents(): Collection
     {
+        //This getter retrieve the events that user the user created
         return $this->events;
     }
 
@@ -156,7 +157,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         if (!$this->events->contains($event)) {
             $this->events->add($event);
-            $event->setUser($this);
+            $event->addUser($this);
         }
 
         return $this;
