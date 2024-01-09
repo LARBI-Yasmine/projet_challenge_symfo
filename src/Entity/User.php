@@ -40,9 +40,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Event::class)]
     private Collection $events;
 
+    #[ORM\ManyToMany(targetEntity: Event::class, inversedBy: 'users')]
+    private Collection $userParticipate;
+
     public function __construct()
     {
         $this->events = new ArrayCollection();
+        $this->userParticipate = new ArrayCollection();
     }
 
 
@@ -166,6 +170,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $event->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Event>
+     */
+    public function getUserParticipate(): Collection
+    {
+        return $this->userParticipate;
+    }
+
+    public function addUserParticipate(Event $userParticipate): static
+    {
+        if (!$this->userParticipate->contains($userParticipate)) {
+            $this->userParticipate->add($userParticipate);
+        }
+
+        return $this;
+    }
+
+    public function removeUserParticipate(Event $userParticipate): static
+    {
+        $this->userParticipate->removeElement($userParticipate);
 
         return $this;
     }
