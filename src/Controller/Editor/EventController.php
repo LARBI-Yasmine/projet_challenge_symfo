@@ -17,6 +17,7 @@ class EventController extends AbstractController
     #[Route('/', name: 'app_event_index', methods: ['GET'])]
     public function index(EventRepository $eventRepository): Response
     {
+        //Make logic for editor
         return $this->render('Editor/Event/index.html.twig', [
             'events' => $eventRepository->findAll(),
         ]);

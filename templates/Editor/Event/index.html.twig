@@ -26,18 +26,15 @@
 					<td>{{ event.participate ? 'Yes' : 'No' }}</td>
 					<td>
 						<a href="{{ path('app_event_show', {'id': event.id}) }}">show</a>
-						{% if () %}
-							<a href="{{ path('app_event_edit', {'id': event.id}) }}">edit</a>
-						</td>
+						{# {% if () %}  add logic for editor#}
+						<a href="{{ path('app_event_edit', {'id': event.id}) }}">edit</a>
 					</td>
 				</tr>
-			{% else %}
-				<tr>
-					<td colspan="6">no records found</td>
-				</tr>
-			{% endfor %}
+			</td>
 		</tbody>
-	</table>
-
-	<a href="{{ path('app_event_new') }}">Create new</a>
-{% endblock %}
+	</tr>
+{% else %}
+	<tr>
+		<td colspan="6">no records found</td>
+	</tr>
+{% endfor %}</tbody></table><a href="{{ path('app_event_new') }}">Create new</a>{% endblock %}
