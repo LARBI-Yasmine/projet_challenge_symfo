@@ -26,6 +26,9 @@ class Event
     #[ORM\Column]
     private ?bool $participate = null;
 
+    #[ORM\ManyToOne(inversedBy: 'events')]
+    private ?User $user = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +78,18 @@ class Event
     public function setParticipate(bool $participate): static
     {
         $this->participate = $participate;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }
