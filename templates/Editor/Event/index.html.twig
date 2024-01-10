@@ -4,67 +4,110 @@
 {% endblock %}
 
 {% block body %}
-{% if user.roles[0] == 'ROLE_ADMIN' %}
-	<h2>Administration des évènements</h2>
-{% else %}
-	<h2>Tous les évènements</h2>
-{% endif %}
-<div class="m-4">
-	<div class="">
-		<button class="">
-			<a href="{{ path('app_event_new') }}">Ajouter un évènement</a>
-		</button>
-	</div>
-	{% for event in events %}
-		{% if (loop.index % 2 == 1 and loop.index > 1) or (loop.index == 1) %}
-			<div class="row center">
-				<div class="col-sm-3">
-					<div class="card" style="width: 18rem;">
-						<div class="card-body">
-							<h5 class="card-title">{{ event.name }}</h5>
-							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							<a href="#" class="btn btn-primary">Go somewhere</a>
+	{% if user.roles[0] == 'ROLE_ADMIN' %}
+		<h2>Administration des évènements</h2>
+	{% else %}
+		<h2>Tous les évènements</h2>
+	{% endif %}
+	<div>
+		<div class="d-flex align-items-center justify-content-center mb-4">
+			<button class="">
+				<a href="{{ path('app_event_new') }}">Ajouter un évènement</a>
+			</button>
+		</div>
+		{# Cette boucle permet d'afficher 2 events par ligne #}
+		{% for event in events %}
+			{% if (loop.index % 2 == 1 and loop.index > 1) or (loop.index == 1) %}
+				<div class="row d-flex align-items-center justify-content-center mb-5">
+					<div class="col-sm-3">
+						<div class="card">
+							<div class="card-body" style="width: 18rem;">
+								<h3 class="card-title">{{ event.name }}</h3>
+								<p class="card-text">{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">icon location
+									{{ event.location }}</li>
+								<li class="list-group-item">Vestibulum at eros</li>
+							</ul>
+							<div
+								class="card-body" style="width: 18rem;">
+								{# <a href="#" class="card-link"> #}
+								{% if (user.roles[0] == 'ROLE_EDITOR' and user.id == event.user.id) or (user.roles[0] == 'ROLE_ADMIN') %}
+									<button class="btn btn-success">
+										<a href="{{ path('app_event_edit', {'id': event.id}) }}">Modifier</a>
+									</button>
+								{% endif %}
+								{# </a> #}
+								{# <a href="#" class="card-link"> #}
+								<button class="btn btn-success">
+									<a href="{{ path('app_event_show', {'id': event.id}) }}">Voir</a>
+								</button>
+								{# </a> #}
+							</div>
+						</div>
+					</div>
+				{% else %}
+					<div class="col-sm-3">
+						<div class="card">
+							<div class="card-body" style="width: 18rem;">
+								<h3 class="card-title">{{ event.name }}</h3>
+								<p class="card-text">{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
+							</div>
+							<ul class="list-group list-group-flush">
+								<li class="list-group-item">icon location
+									{{ event.location }}</li>
+								<li class="list-group-item">Vestibulum at eros</li>
+							</ul>
+							<div
+								class="card-body" style="width: 18rem;">
+								{# <a href="#" class="card-link"> #}
+								{% if (user.roles[0] == 'ROLE_EDITOR' and user.id == event.user.id) or (user.roles[0] == 'ROLE_ADMIN') %}
+									<button class="btn btn-success">
+										<a href="{{ path('app_event_edit', {'id': event.id}) }}">Modifier</a>
+									</button>
+								{% endif %}
+								{# </a> #}
+								{# <a href="#" class="card-link"> #}
+								<button class="btn btn-success">
+									<a href="{{ path('app_event_show', {'id': event.id}) }}">Voir</a>
+								</button>
+								{# </a> #}
+							</div>
 						</div>
 					</div>
 				</div>
-			{% else %}
-				<div class="col-sm-3">
-					<div class="card" style="width: 18rem;">
-						<div class="card-body">
-							<h5 class="card-title">{{ event.name }}</h5>
-							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-							<a href="#" class="btn btn-primary">Go somewhere</a>
-						</div>
-					</div>
+			{% endif %}
+		{% endfor %}
+	</div>
+
+
+	{# {% for event in events %}
+			<div class="card" style="width: 18rem;">
+				<div class="card-body">
+					<h3 class="card-title">{{ event.name }}</h3>
+					<p class="card-text">{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">icon location
+						{{ event.location }}</li>
+					<li class="list-group-item">Vestibulum at eros</li>
+				</ul>
+				<div class="card-body">
+					<a href="#" class="card-link">
+						{% if (user.roles[0] == 'ROLE_EDITOR' and user.id == event.user.id) or (user.roles[0] == 'ROLE_ADMIN') %}
+							<button>
+								<a href="{{ path('app_event_edit', {'id': event.id}) }}">Modifier</a>
+							</button>
+						{% endif %}
+					</a>
+					<a href="#" class="card-link">
+						<button>
+							<a href="{{ path('app_event_show', {'id': event.id}) }}">Voir</a>
+						</button>
+					</a>
 				</div>
 			</div>
-		{% endif %}
-	{% endfor %}
-</div>
-{% for event in events %}
-	<div class="card" style="width: 18rem;">
-		<div class="card-body">
-			<h3 class="card-title">{{ event.name }}</h5>
-			<p class="card-text">{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</p>
-		</div>
-		<ul class="list-group list-group-flush">
-			<li class="list-group-item">icon location
-				{{ event.location }}</li>
-			<li class="list-group-item">Vestibulum at eros</li>
-		</ul>
-		<div class="card-body">
-			<a href="#" class="card-link">
-				{% if (user.roles[0] == 'ROLE_EDITOR' and user.id == event.user.id) or (user.roles[0] == 'ROLE_ADMIN') %}
-					<button>
-						<a href="{{ path('app_event_edit', {'id': event.id}) }}">Modifier</a>
-					</button>
-				{% endif %}
-			</a>
-			<a href="#" class="card-link">
-				<button>
-					<a href="{{ path('app_event_show', {'id': event.id}) }}">Voir</a>
-				</button>
-			</a>
-		</div>
-	</div>
-</div>{% endfor %}{% endblock %}
+		</div>{% endfor %} #}
+
+{% endblock %}
