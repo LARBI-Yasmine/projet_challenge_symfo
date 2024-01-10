@@ -19,6 +19,7 @@ class EventController extends AbstractController
     {
         $user = $this->getUser();
         $events = $eventRepository->findAll();
+        // dd($events);
         return $this->render('Editor/Event/index.html.twig', [
             'events' => $events,
             'user' => $user,
