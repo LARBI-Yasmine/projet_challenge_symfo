@@ -15,21 +15,26 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/admin/event')]
 class EventController extends AbstractController
 {
-    //List evenements
-    #[Route('/', name: 'app_event_index', methods: ['GET'])]
-    public function index(EventRepository $eventRepository,Request $request,PaginatorInterface $paginator): Response
-    {
-        if ($this->isGranted('ROLE_ADMIN')) {
-            $events = $eventRepository->findAll();   
-        } else {
-            $events = $eventRepository->findBy(['user' => $this->getUser()]);   
-        }
-
-        return $this->render('Backend/Admin/adminAllEvents.html.twig', [
-            'events' => $events,
-        ]);
-    }
-
+     //List evenements
+     #[Route('/', name: 'app_event_index', methods: ['GET'])]
+     public function index(EventRepository $eventRepository,Request $request,PaginatorInterface $paginator): Response
+     {
+ 
+ 
+         if ($this->isGranted('ROLE_ADMIN')) {
+             $pagination =  $paginator->paginate(
+                 $eventRepository->paginationQuery(),$request->query->get('page',1),4);
+         } else {
+             $pagination =  $paginator->paginate(
+                 $eventRepository->paginationQueryByUser($this->getUser()),$request->query->get('page',1),4);
+ 
+         }
+ 
+         return $this->render('Backend/Admin/adminAllEvents.html.twig', [
+             'pagination' => $pagination,
+         ]);
+     }
+ 
 
     #[Route('/index', name: 'event_index', methods: ['GET'])]
     public function event_index(EventRepository $eventRepository,Request $request,PaginatorInterface $paginator): Response
