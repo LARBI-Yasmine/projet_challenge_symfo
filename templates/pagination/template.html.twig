@@ -17,11 +17,11 @@
 
 			{% if previous is defined %}
 				<li class="page-item">
-					<a class="page-link" rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">&laquo;&nbsp;Précedent</a>
+					<a class="page-link" rel="prev" href="{{ path(route, query|merge({(pageParameterName): previous})) }}">&laquo;&nbsp;Précédent</a>
 				</li>
 			{% else %}
 				<li class="page-item disabled">
-					<span class="page-link">&laquo;&nbsp;Précedent</span>
+					<span class="page-link">&laquo;&nbsp;Précédent</span>
 				</li>
 			{% endif %}
 
