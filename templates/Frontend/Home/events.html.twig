@@ -6,8 +6,7 @@
 
 
 	<section>
-		<h1 class="h1 font-weight-normal healthh mt-2 mb-3">Evènements
-		</h1>
+		<h1 class="h1 font-weight-normal healthh mt-2 mb-3">Evènements</h1>
 		<div class=" container">
 			<div class="row">
 				{% for booking in bookings %}
@@ -15,13 +14,8 @@
 						<div class="card shadow p-3 mb-5 bg-body rounded" style="width: 100%;height:95%;display: flex;">
 							<div class="card-body">
 								<h2 class="card-title font-weight-normal ecriture">{{ booking.event.name }}</h2>
-
 								<h6>
-
-
 									<p class="card-text">
-
-
 										<span>
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-date-fill" viewbox="0 0 16 16">
 												<path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zm5.402 9.746c.625 0 1.184-.484 1.184-1.18 0-.832-.527-1.23-1.16-1.23-.586 0-1.168.387-1.168 1.21 0 .817.543 1.2 1.144 1.2"/>
@@ -36,42 +30,39 @@
 										<span>
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewbox="0 0 16 16">
 												<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3
-																																																																																																																																																																								   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+																																																																																																																																																																																																																																																												   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
 											</svg>
 										</span>
-										{{booking.event.location}}</p>
+										{{booking.event.location}}
+									</p>
 
 									<p>Déscription
 									</p>
 								</h6>
-							</p>
-							{% if booking.status == 1 %}
-								<p>Confirmé</p>
-							{% else %}
-								<p style="color: red;">Annulé</p>
-							{% endif %}
 
+								{% if booking.status == 1 %}
+									<p>Confirmé</p>
+								{% else %}
+									<p style="color: red;">Annulé</p>
+								{% endif %}
+								<div>
+									<form action="/eventWithdraw" method="POST">
+										<button class="btn btn-success justify-content-center d-flex">
+											Se désister
+											<input type="hidden" name="token" value="{{ csrf_token('withdraw' ~ booking.id) }}">
+											<input type="hidden" name="id" value="{{ booking.id }}">
+										</button>
+									</form>
 
-							<div>
-								<form action="/eventWithdraw" method="POST">
-									<button class="btn btn-success justify-content-center d-flex">
-										Se désister
-										<input type="hidden" name="token" value="{{ csrf_token('withdraw' ~ event.id) }}">
-										<input type="hidden" name="id" value="{{ event.id }}">
-									</button>
-								</form>
+									<a href="{{ path('app_all_events') }}" class="btn btn-primary">retour</a>
+								</div>
 
-								<a href="{{ path('app_all_events') }}" class="btn btn-primary">retour</a>
 							</div>
-
 						</div>
-
 					</div>
-				</div>
 
-			{% endfor %}
+				{% endfor %}
+			</div>
 		</div>
-	</div>
-
-
-</section>{% endblock %}
+	</section>
+{% endblock %}

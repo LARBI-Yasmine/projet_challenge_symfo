@@ -12,24 +12,31 @@
 
 	<h1 class="h3 font-weight-normal healthh mt-4 mb-4 ">Connexion</h1>
 
-	<div class="container col-4 mb-3 shadow p-3 mb-5 bg-body rounded col-5 position-absolute top-50 start-50 translate-middle">
+	<div class="container  mb-3 shadow p-3 mb-5 bg-body rounded col-5 position-absolute top-50 start-50 translate-middle">
 		<div class="row">
-			<div class="col-10">
+			<div class="col-12">
+
+
 				<form method="post">
 
 					<div class="mt-5 mb-3">
-						<label class="mb-3" style="color:#0C8B82;">
+						<label class="mb-2">
 							E-mail
 						</label>
 						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
 					</div>
-					<div class="mt-5 mb-3">
-						<label class="mb-3" style="color:#0C8B82;">
-							Mot de passe</label>
+
+
+					<div class="mt-4 mb-3">
+						<label class="mb-3">
+							Mot de passe
+						</label>
 						<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
 					</div>
+
+
 					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-					<button class="btn bouton mt-5 mb-3 " type="submit">
+					<button class="btn bouton mt-4 mb-3  justify-content-center d-flex " type="submit">
 						Se connecter
 					</button>
 
@@ -39,8 +46,6 @@
 			<div>
 				<a href="/register" style="color:#0C8B82;">Vous n'êtes pas inscrit ? Inscrivez-vous</a>
 			</div>
-		</div>
 
 
-	</div>
-{% endblock %}
+		{% endblock %}

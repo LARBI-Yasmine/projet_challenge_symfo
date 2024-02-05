@@ -20,23 +20,36 @@
 				{% for event in events %}
 					<div class="col-md-6">
 						<div class="card shadow p-3 mb-5 bg-body rounded" style="width: 100%;height:95%;display: flex;">
+							<img src="{{ asset ('images/conference.jpg') }}" class="card-img-top  " alt="image" height='200'>
 							<div class="card-body">
 								<h2 class="card-title font-weight-normal ecriture">{{ event.name }}</h2>
 
 								<h6>
-									{% for category in event.categories %}
-										<p class="card-text">
-											Catégorie
-											{{category.titre}}</p>
-									{% endfor %}
+
 
 									<p class="card-text">
-										Aura lieu le
-										{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}
+										<span>
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar-date-fill" viewbox="0 0 16 16">
+												<path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zm5.402 9.746c.625 0 1.184-.484 1.184-1.18 0-.832-.527-1.23-1.16-1.23-.586 0-1.168.387-1.168 1.21 0 .817.543 1.2 1.144 1.2"/>
+												<path d="M16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-6.664-1.21c-1.11 0-1.656-.767-1.703-1.407h.683c.043.37.387.82 1.051.82.844 0 1.301-.848 1.305-2.164h-.027c-.153.414-.637.79-1.383.79-.852 0-1.676-.61-1.676-1.77 0-1.137.871-1.809 1.797-1.809 1.172 0 1.953.734 1.953 2.668 0 1.805-.742 2.871-2 2.871zm-2.89-5.435v5.332H5.77V8.079h-.012c-.29.156-.883.52-1.258.777V8.16a13 13 0 0 1 1.313-.805h.632z"/>
+											</svg>
+										</span>
+										{{ event.date | date('d F Y') }}
+										à
+										{{ event.date | date('H:i:s') }}
 									</p>
 									<p class="card-text">
-										Le lieu de l'évenement
-										{{event.location}}</p>
+										<span>
+											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewbox="0 0 16 16">
+												<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3
+																																																																																																																																																																																																																																																																																																																																				   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+											</svg>
+										</span>
+										{{event.location}}
+									</p>
+									<p>
+										Description
+									</p>
 
 
 								</h6>
@@ -68,10 +81,5 @@
 			</h5>
 		</section>
 	{% endif %}
-
-
-	<div class="container  shadow p-3 bg-body mt-5">
-		<p class="ecriture" style="text-align: center;">Copyright HEALTH EVENT 2024</p>
-	</div>
 
 {% endblock %}
