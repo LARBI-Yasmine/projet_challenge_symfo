@@ -40,9 +40,9 @@
 
 
 								</h6>
-								{% if (user) %}
-									<form action="eventParticipate" method="POST">
-										<button>
+								{% if (app.user) %}
+									<form action="event-participate" method="POST">
+										<button class="btn btn-success">
 											Participer
 										</button>
 										<input type="hidden" name="token" value="{{ csrf_token('participate' ~ event.id) }}">
@@ -60,13 +60,14 @@
 		</div>
 	</section>
 
-
-	<section>
-		<h5 style="text-align:center;">Si vous souhaitez participer à un évènement, vous devez vous
-			<a href="/register" class="ecriture">Inscrire
-			</a>
-		</h5>
-	</section>
+	{% if not app.user %}
+		<section class="mt-5">
+			<h5 style="text-align:center;">Si vous souhaitez participer à un évènement, vous devez vous
+				<a href="/register" class="ecriture">Inscrire
+				</a>
+			</h5>
+		</section>
+	{% endif %}
 
 
 	<div class="container  shadow p-3 bg-body mt-5">
