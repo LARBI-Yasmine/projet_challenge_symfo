@@ -2,9 +2,10 @@
 
 namespace App\Repository;
 
+use App\Entity\User;
 use App\Entity\Event;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Event>
@@ -31,23 +32,30 @@ class EventRepository extends ServiceEntityRepository
 
             ->getQuery()
 
-            ->getResult();
+            ->getResult()
+            ;
     }
 
-//    /**
-//     * @return Event[] Returns an array of Event objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('e')
-//            ->andWhere('e.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('e.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+//pagination 
+    public function paginationQuery()
+    {
+         return $this->createQueryBuilder('e')
+           ->orderBy('e.id', 'ASC')
+            ->getQuery();
+        
+     }
+
+
+     // fonction pour afficher les events créé par un user
+
+     public function findEventsCreatedByUser(User $user)
+     {
+         return $this->createQueryBuilder('e')
+             ->andWhere('e.createdBy = :user')
+             ->setParameter('user', $user)
+             ->getQuery()
+             ->getResult();
+     }
 
 //    public function findOneBySomeField($value): ?Event
 //    {
