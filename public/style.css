@@ -1,0 +1,70 @@
+.bouton {
+
+    background-color: #0C8B82;
+
+    color: white;
+}
+
+.boutonn {
+
+    background-color: white;
+}
+
+.health {
+    color: #0C8B82;
+    font-weight: bold;
+}
+
+.vert {
+    color: #0C8B82;
+}
+
+.healthh {
+    text-align: center;
+    color: #0C8B82;
+}
+
+.ecriture {
+    color: #0C8B82;
+
+}
+
+.aa {
+    border-radius: 1px;
+    background-color: #0C8B82;
+
+
+}
+
+.page-item.active .page-link {
+    background-color: #0C8B82 !important;
+    border-color: #0C8B82 !important;
+    color: white !important;
+
+}
+
+.page-link {
+    color: #0C8B82 !important;
+}
+
+.bb {
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.image {
+
+    background-size: cover;
+    /* Ajuste la taille de l'image pour couvrir toute la fenêtre */
+
+    background-repeat: no-repeat;
+    /* Évite la répétition de l'image */
+    height: 600px !important;
+    width: 100%;
+    /* Ajuste la hauteur à la hauteur de la fenêtre visible */
+    display: flex;
+    flex-direction: column;
+
+
+}
