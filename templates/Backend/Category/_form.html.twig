@@ -1,4 +1,10 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+
+{{ form_row(form.titre) }}
+
+<button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+<a href="{{ path('app_category_index') }}" class="btn btn-primary">retour</a>
+
+
 {{ form_end(form) }}

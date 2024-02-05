@@ -1,13 +1,48 @@
-{% extends 'base.html.twig' %}
+{% extends '_admin.html.twig' %}
 
-{% block title %}Edit Category{% endblock %}
+{% block title %}Edit Category
+{% endblock %}
 
 {% block body %}
-    <h1>Edit Category</h1>
+	<h1 class="h3 font-weight-normal healthh mt-5">Editer la Categorie
+		{{category.titre}}</h1>
 
-    {{ include('Backend/Category/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_category_index') }}">back to list</a>
+	<div class="shadow p-3 mb-5 bg-body rounded col-5 position-absolute top-50 start-50 translate-middle">
 
-    {{ include('Backend/Category/_delete_form.html.twig') }}
+		<div class="container col-8 mt-5 ">
+			<div class="row">
+
+				<table>
+					<tr>
+
+
+						{{ form_start(form) }}
+
+						<td>
+							{{ form_row(form.titre) }}
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>&nbsp;&nbsp;&nbsp;
+
+							<a href="{{ path('app_category_index') }}" class="btn btn-primary">retour</a>
+						</td>
+
+
+						{{ form_end(form) }}
+
+
+					</tr>
+
+				</table>
+
+
+			</div>
+		</div>
+
+
+	</div>
+
 {% endblock %}

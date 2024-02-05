@@ -1,34 +1,58 @@
-{% extends 'base.html.twig' %}
+{% extends '_admin.html.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}Categories
+{% endblock %}
 
 {% block body %}
-    <h1>Category index</h1>
+	<h1 class="h3 font-weight-normal healthh mt-2  ">Liste des  categories</h1>
+	<div class="shadow p-3 mb-5 bg-body rounded col-6 position-absolute top-50 start-50 translate-middle">
+		<a href="{{ path('app_category_new') }}" class=" btn btn-outline-success">Créer une nouvelle catégorie</a>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for category in categories %}
-            <tr>
-                <td>{{ category.titre }}</td>
-                <td>
-                    <a href="{{ path('app_category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('app_category_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+		<div class="container col-10 mt-1 ">
+			<div class="row">
 
-    <a href="{{ path('app_category_new') }}">Create</a>
+
+				<table class="table">
+					<thead>
+						<tr>
+
+							<th>Titre</th>
+							<th>actions</th>
+						</tr>
+					</thead>
+					<tbody>
+						{% for category in pagination %}
+							<tr>
+								<td>{{ category.titre }}</td>
+								<td>
+									<a href="{{ path('app_category_show', {'id': category.id}) }}" class="btn btn-primary">Détail</a>
+									<a href="{{ path('app_category_edit', {'id': category.id}) }}" class="btn btn-warning">Modifier</a>
+								</td>
+							</tr>
+						{% else %}
+							<tr>
+								<td colspan="3">Aucune catégorie trouvée</td>
+							</tr>
+						{% endfor %}
+
+
+					</tbody>
+				</table>
+
+				<div class="row ">
+					<div class="justify-content-center d-flex">
+						{{knp_pagination_render(pagination)}}
+
+					</div>
+				</div>
+
+
+			</div>
+
+
+		</div>
+
+	</div>
+
+
 {% endblock %}
