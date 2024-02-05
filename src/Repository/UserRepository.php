@@ -39,20 +39,26 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->getEntityManager()->flush();
     }
 
-//    /**
-//     * @return User[] Returns an array of User objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('u')
-//            ->andWhere('u.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('u.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function paginationQuery()
+    {
+         return $this->createQueryBuilder('u')
+           ->orderBy('u.id', 'ASC')
+            ->getQuery();
+        
+     }
+
+
+    
+
+   // public function countUser(): int
+   // {
+     //   return $this->createQueryBuilder('u')
+    //        ->select('COUNT(u.id)') // Utilisez COUNT pour obtenir le nombre d'éléments
+           // ->andWhere('u.roles IN (:roles)')
+       //     ->setParameter('roles', ['ROLE_EDITOR', 'ROLE_USER'])
+         //   ->getQuery()
+          //  ->getSingleScalarResult(); // Utilisez getSingleScalarResult pour obtenir un résultat unique (le nombre)
+   // }
 
 //    public function findOneBySomeField($value): ?User
 //    {
