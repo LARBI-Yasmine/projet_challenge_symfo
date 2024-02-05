@@ -36,19 +36,23 @@ class EventController extends AbstractController
      }
  
 
-    #[Route('/index', name: 'event_index', methods: ['GET'])]
-    public function event_index(EventRepository $eventRepository,Request $request,PaginatorInterface $paginator): Response
-    {
-        if ($this->isGranted('ROLE_ADMIN')) {
-            $events = $eventRepository->findAll();   
-        } else {
-            $events = $eventRepository->findBy(['user' => $this->getUser()]);   
-        }
+   // list evenement avec bouton modifier et supprimer
+   #[Route('/index', name: 'event_index', methods: ['GET'])]
+   public function event_index(EventRepository $eventRepository,Request $request,PaginatorInterface $paginator): Response
+   {
+       if ($this->isGranted('ROLE_ADMIN')) {
+           $pagination =  $paginator->paginate(
+               $eventRepository->paginationQuery(),$request->query->get('page',1),5);
+       } else {
+           $pagination =  $paginator->paginate(
+               $eventRepository->paginationQueryByUser($this->getUser()),$request->query->get('page',1),5);
 
-        return $this->render('Backend/Event/index.html.twig', [
-            'events' => $events,
-        ]);
-    }
+       }
+
+       return $this->render('Backend/Event/index.html.twig', [
+           'pagination' => $pagination
+       ]);
+   }
 
 
     
