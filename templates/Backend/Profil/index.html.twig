@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edition du profil
+{% endblock %}
+
+{% block body %}
+	<div class="my-profil">
+		<div class="container">
+			<h1 class="mt-5 mb-4">Editer mon profil</h1>
+			<div class="p-3 mb-5 bg-body rounded">
+				<div class="container col-8 mt-5 ">
+					<div class="row">
+						{% form_theme form 'bootstrap_5_layout.html.twig' %}
+						{{ form_start(form) }}
+						{{ form_widget(form) }}
+						<button class="btn btn-success mb-5">{{ button_label|default('Modifier') }}</button>
+						{{ form_end(form) }}
+						{% form_theme passwordForm 'bootstrap_5_layout.html.twig' %}
+						{{ form_start(passwordForm) }}
+						{{ form_widget(passwordForm) }}
+						<button class="btn btn-success">{{ button_label|default('Modifier') }}</button>
+						{{ form_end(passwordForm) }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
