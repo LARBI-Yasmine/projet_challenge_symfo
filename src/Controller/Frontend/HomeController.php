@@ -53,7 +53,7 @@ class HomeController extends AbstractController
         if ($user) {
             $userEvents = $user->getUserParticipate();
             return $this->render('Frontend/Home/events.html.twig', [
-                'events' => $userEvents
+                'bookings' => $user->getBookings()
             ]);
         }
         return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
