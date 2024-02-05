@@ -1,3 +1,7 @@
+body {
+    min-height: 80vh;
+}
+
 .bouton {
 
     background-color: #0C8B82;
@@ -65,6 +69,8 @@
     /* Ajuste la hauteur à la hauteur de la fenêtre visible */
     display: flex;
     flex-direction: column;
+}
 
-
+.my-profil {
+    min-height: 80vh;
 }
