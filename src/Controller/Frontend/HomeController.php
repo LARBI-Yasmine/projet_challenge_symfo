@@ -67,12 +67,11 @@ class HomeController extends AbstractController
         $user = $this->getUser();
         $event = $this->eventRepo->find($request->request->get('id', 0));
         if ($this->isCsrfTokenValid('participate' . $event->getId(), $request->request->get('token'))) {
-            if ($event) {
-                $user->addUserParticipate($event);
-                $event->setParticipate(True);
-                $this->entityManager->flush();
-                // $this->addFlash('success', 'Participation prise en compte');
-    
+            if ($event instanceof Event) {
+                $booking = (new Booking())
+                    ->setUser($user)
+                    ->setEvent($event);
+                $this->entityManager->persist($booking);
                 return $this->redirectToRoute('app_events');
             }
         }
