@@ -14,10 +14,10 @@ class CategoryType extends AbstractType
     {
         $builder
         ->add('titre', TextType::class, [
-            'label' => 'Titre:',
+            'label' => 'Titre ',
             'required' => true,
             'attr' => [
-                'placeholder' => 'Titre de la catégorie'
+                'placeholder' => 'titre de la catégorie'
             ]
             ]);
     }
