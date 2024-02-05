@@ -23,10 +23,8 @@ class HomeController extends AbstractController
     #[Route('/', name: 'app_home', methods:['GET'])]
     public function index(): Response
     {
-        $user = $this->getUser();
         return $this->render('Frontend/Home/accueil.html.twig', [
             'events' => $this->eventRepo->findLastEvents(4),
-            'user' => $user
         ]);
     }
 
