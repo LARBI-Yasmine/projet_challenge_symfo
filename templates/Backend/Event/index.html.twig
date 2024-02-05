@@ -1,0 +1,63 @@
+{% extends '_admin.html.twig' %}
+
+{% block title %}EventList
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="shadow p-3  bg-body rounded mt-4 col-11 position-absolute top-50 start-50 translate-middle">
+		<a href="{{ path('app_event_new') }}" class="btn btn-outline-success">Créer un nouveau evenement</a>
+
+		<div class="container col-11 mt-1">
+			<div class="row">
+
+				<table class="table">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Titre</th>
+							<th>Date</th>
+							<th>Lieu</th>
+							<th>Description</th>
+							<th>actions</th>
+						</tr>
+					</thead>
+
+
+					<tbody>
+						{% for event in events %}
+							<tr>
+								<td>{{ event.id }}</td>
+								<td>{{ event.name }}</td>
+								<td>{{ event.date ? event.date|date('Y-m-d H:i:s') : '' }}</td>
+								<td>{{ event.location }}</td>
+								<td>{{ event.description }}</td>
+
+								<td>
+									<a href="{{ path('app_event_show', {'id': event.id}) }}" class="btn btn-primary">Détail</a>
+									<a href="{{ path('app_event_edit', {'id': event.id}) }}" class="btn btn-warning">Modifier</a>
+								</td>
+							</tr>
+
+
+						{% else %}
+							<tr>
+								<td colspan="6">Aucun evenement trouvé
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+
+
+				</table>
+
+				<div class="row">
+					<div class="justify-content-center d-flex"></div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

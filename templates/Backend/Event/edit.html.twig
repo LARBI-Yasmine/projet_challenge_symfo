@@ -1,0 +1,26 @@
+{% extends '_admin.html.twig' %}
+
+{% block title %}EditEvent
+{% endblock %}
+
+{% block body %}
+	<h1 class="h3 font-weight-normal healthh mt-5 ">Modifier l'Evenement :
+		{{event.name}}</h1>
+
+	<div class="shadow p-3 bg-body mt-4 rounded col-6 position-absolute top-50 start-50 translate-middle">
+		<div class="container col-10 mt-4">
+			<div class="row">
+				<table>
+					<tr>
+						<td>
+
+							{{ include('Backend/Event/_form.html.twig') }}
+						</td>
+
+					</tr>
+				</table>
+
+			</div>
+		</div>
+	</div>
+{% endblock %}

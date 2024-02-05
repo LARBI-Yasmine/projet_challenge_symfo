@@ -1,0 +1,9 @@
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+
+
+<a href="{{ path('app_event_index') }}" class="btn btn-primary">retour</a>
+<button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
+
+{{ form_end(form) }}
