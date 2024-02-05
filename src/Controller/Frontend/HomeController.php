@@ -81,23 +81,18 @@ class HomeController extends AbstractController
         return $this->redirectToRoute('app_events');
     }
     
-//desister
+//desister un evenement 
     
     #[Route('/eventWithdraw', name: 'app_event_withdraw', methods:['GET', 'POST'])]
     public function eventWithdraw(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $user = $this->getUser();
-        $event = $this->eventRepo->find($request->request->get('id', 0));
-        if ($this->isCsrfTokenValid('withdraw' . $event->getId(), $request->request->get('token'))) {
-            if ($event) {
-                $user->removeUserParticipate($event);
-                $event->setParticipate(False);
-                $this->entityManager->flush();
-                // $this->addFlash('success', 'Participation prise en compte');
-    
+        $booking = $bookingRepository->find($request->request->get('id', 0));
+        if ($this->isCsrfTokenValid('withdraw' . $booking->getId(), $request->request->get('token'))) {
+            $booking->setStatus(Booking::BOOKING_STATUS_CANCELLED);
+            $this->entityManager->flush();
                 return $this->redirectToRoute('app_events');
             }
-        }
+        
 
         $this->addFlash('error', 'Token CSRF invalide');
 
