@@ -34,15 +34,24 @@ class EventType extends AbstractType
                 'expanded' => true
             ])
             ->add('date', DateTimeType::class, [
-                'label' => 'Date de naissance', 
+                'label' => 'Date d\'evenement', 
                 'required' => true,
                 'widget' => 'single_text'
             ])
             ->add('location', TextType::class, [
-                'label' => 'Lieu',
+                'label' => 'Lieu de l\'evenement ',
                 'required' => true,
                 'attr' => [
                     'placeholder' => 'Lyon'
+                ]
+            ])
+
+            ->add('description', TextType::class, [
+                'label' => 'Description',
+                'required' => true,
+                'attr' => [
+                    'placeholder' => 'description...',
+                    'type'=>'text'
                 ]
             ])
             ->add('participate', CheckboxType::class, [
