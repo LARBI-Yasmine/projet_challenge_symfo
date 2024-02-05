@@ -1,16 +1,25 @@
-{% extends 'base.html.twig' %}
+{% extends 'base_inscrp.html.twig' %}
 
-{% block title %}Inscription{% endblock %}
+
+{% block title %}Inscription
+{% endblock %}
 
 {% block body %}
-    <h1>Inscription</h1>
 
-    {{ form_errors(registrationForm) }}
+	<h1 class="h3 font-weight-normal healthh mt-3">Inscription</h1>
 
-    {{ form_start(registrationForm) }}
-        {{ form_widget(registrationForm) }}
+	{{ form_errors(registrationForm) }}
+	<div class="container col-8 shadow p-3 mb-5 bg-body rounded col-5 position-absolute top-50 start-50 translate-middle">
+		<div class="row">
 
-        <button type="submit" class="btn">Inscription</button>
-    {{ form_end(registrationForm) }}
-    
+			{{ form_start(registrationForm) }}
+			{{ form_widget(registrationForm) }}
+
+			<button type="submit" class="btn bouton ">Inscription</button>
+			{{ form_end(registrationForm) }}
+
+		</div>
+	</div>
+
+
 {% endblock %}
