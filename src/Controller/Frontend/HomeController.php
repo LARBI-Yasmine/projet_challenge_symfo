@@ -3,7 +3,9 @@
 namespace App\Controller\Frontend;
 
 use App\Entity\Event;
+use App\Entity\Booking;
 use App\Repository\EventRepository;
+use App\Repository\BookingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -84,7 +86,7 @@ class HomeController extends AbstractController
 //desister un evenement 
     
     #[Route('/eventWithdraw', name: 'app_event_withdraw', methods:['GET', 'POST'])]
-    public function eventWithdraw(Request $request, EntityManagerInterface $entityManager): Response
+    public function eventWithdraw(Request $request,BookingRepository $bookingRepository, EntityManagerInterface $entityManager): Response
     {
         $booking = $bookingRepository->find($request->request->get('id', 0));
         if ($this->isCsrfTokenValid('withdraw' . $booking->getId(), $request->request->get('token'))) {
