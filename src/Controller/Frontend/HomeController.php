@@ -5,6 +5,7 @@ namespace App\Controller\Frontend;
 use App\Entity\Event;
 use App\Repository\EventRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,16 +19,19 @@ class HomeController extends AbstractController
     ) {
     }
 
+    // 4 evenements à venir
     #[Route('/', name: 'app_home', methods:['GET'])]
     public function index(): Response
     {
         $user = $this->getUser();
-        return $this->render('Frontend/Home/index.html.twig', [
+        return $this->render('Frontend/Home/accueil.html.twig', [
             'events' => $this->eventRepo->findLastEvents(4),
             'user' => $user
         ]);
     }
 
+
+    //tous les evenements
     #[Route('/allEvents', name: 'app_all_events')]
     public function showAllEvents(): Response
     {
@@ -41,6 +45,8 @@ class HomeController extends AbstractController
         return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
     }
 
+
+    //evenement pour participer
     #[Route('/events', name: 'app_events')]
     public function showUserEvents(): Response
     {
@@ -55,7 +61,7 @@ class HomeController extends AbstractController
         return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
     }
 
-    // EntityManagerInterface $entityManager
+    // action  participer
     
     #[Route('/eventParticipate', name: 'app_event_participate', methods:['GET', 'POST'])]
     public function eventParticipate(Request $request, EntityManagerInterface $entityManager): Response
@@ -77,6 +83,8 @@ class HomeController extends AbstractController
 
         return $this->redirectToRoute('app_events');
     }
+    
+//desister
     
     #[Route('/eventWithdraw', name: 'app_event_withdraw', methods:['GET', 'POST'])]
     public function eventWithdraw(Request $request, EntityManagerInterface $entityManager): Response
