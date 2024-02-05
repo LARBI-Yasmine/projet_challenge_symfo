@@ -42,7 +42,7 @@ class EventType extends AbstractType
                 'label' => 'Lieu de l\'evenement ',
                 'required' => true,
                 'attr' => [
-                    'placeholder' => 'Lyon'
+                    'placeholder' => 'Lieu...'
                 ]
             ])
 
