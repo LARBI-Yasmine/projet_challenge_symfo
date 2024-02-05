@@ -1,0 +1,84 @@
+{% extends '_admin.html.twig' %}
+
+{% block title %}Utilisateurs
+{% endblock %}
+{% block body %}
+
+	<h1 class="h3 font-weight-normal healthh mt-1  mb-3">Gérer les utilisateurs</h1>
+
+	<div class="shadow p-3 mb-5 bg-body rounded col-10 position-absolute top-50 start-50 translate-middle">
+		<div class="container col-10 mt-5 ">
+			<div class="row">
+
+				<table class="table">
+					<thead>
+						<tr>
+
+
+							<th scope="col">ID</th>
+							<th scope="col">Nom</th>
+							<th scope="col">
+								Prénom</th>
+							<th scope="col">Email</th>
+							<th scope="col">Role</th>
+
+							<th scope="col">Action</th>
+							<th scope="col"></th>
+
+						</tr>
+					</thead>
+					<tbody>
+						{% for user in pagination %}
+							<tr>
+
+								<td>{{ user.id}}</td>
+								<td>{{ user.firstname}}</td>
+								<td>{{ user.lastname }}</td>
+								<td>{{ user.email }}</td>
+								<td>
+									{% for role in user.roles %}
+										{% if role == 'ROLE_USER' %}
+											Utilisateur
+										{% elseif role == 'ROLE_EDITOR' %}
+											Editeur
+										{% elseif role == 'ROLE_ADMIN' %}
+											Admin
+
+
+										{% endif %}
+
+
+									{% endfor %}
+								</td>
+
+								<td>
+									<a href="{{ path('app_user_show', {'id': user.id}) }}" class="btn btn-primary">Détail</a>
+
+								</td>
+								<td>
+									<a href="{{ path('app_user_edit', {'id': user.id}) }}" class="btn btn-warning">Modifier</a>
+								</td>
+
+
+							</tr>
+
+						{% else %}
+							<tr>
+								<td colspan="3">Aucun utilisateur trouvé</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</tr>
+			</tbody>
+		</tbody>
+	</table>
+
+	<div class="row ">
+		<div class="justify-content-center d-flex">
+			{{knp_pagination_render(pagination)}}
+
+		</div>
+	</div>
+
+
+</div></div></div>{% endblock %}
