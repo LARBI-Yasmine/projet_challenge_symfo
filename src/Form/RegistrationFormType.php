@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
@@ -22,17 +23,19 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Prénom',
                 'required' => true,
                 'attr' => [
-                    'placeholder' => "Votre prénom"
-                    ]
+                    'placeholder' => "Votre prénom",
+                    
+                ],
                 ])
             ->add('lastname',TextType::class, [
                 'label' => 'Nom',
                 'required' => true,
                 'attr' => [
-                    'placeholder' => "Votre nom"
-                    ]
+                    'placeholder' => "Votre nom",
+                    
+                ],
                 ])
-            ->add('email')
+            ->add('email',EmailType::class)
             
             ->add('password', PasswordType::class, [
                                 // instead of being set onto the object directly,
