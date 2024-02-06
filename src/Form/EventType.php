@@ -53,12 +53,7 @@ class EventType extends AbstractType
                     'placeholder' => 'description...',
                     'type'=>'text'
                 ]
-            ])
-            ->add('participate', CheckboxType::class, [
-                'label' => 'Participer',
-                'required' => false
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

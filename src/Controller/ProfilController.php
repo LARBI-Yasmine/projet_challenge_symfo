@@ -26,7 +26,7 @@ class ProfilController extends AbstractController
             $user->setPassword(
                 $userPasswordHasher->hashPassword($user,$form->get('password')->getData()));
             $entityManager->flush();
-            return $this->redirectToRoute('app_home');
+            return $this->redirectToRoute('app_event_index');
         }
 
         

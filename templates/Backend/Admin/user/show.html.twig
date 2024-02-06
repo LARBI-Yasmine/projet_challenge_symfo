@@ -5,18 +5,15 @@
 
 {% block body %}
 	<h1 class="h3 font-weight-normal healthh mt-5 ">L'utilisateur
-		{{user.firstname}}
-		{{user.lastname}}</h1>
+		{{user.firstname|capitalize}}
+		{{user.lastname|capitalize}}</h1>
 
-	<div class="shadow p-3 mb-5 bg-body rounded col-4 position-absolute top-50 start-50 translate-middle">
+	<div class="shadow p-3 mb-5 bg-body rounded col-5 position-absolute top-50 start-50 translate-middle">
 		<div class="container col-10 mt-5 ">
 			<div class="row">
 				<table class="table">
 					<tbody>
-						<tr>
-							<th>ID</th>
-							<td>{{ user.id }}</td>
-						</tr>
+
 						<tr>
 							<th>Nom</th>
 							<td>{{user.firstname}}</td>

@@ -5,18 +5,21 @@
 
 {% block body %}
 	<h1 class="h3 font-weight-normal healthh mt-5">Editer l'utilisateur
-		{{user.firstname}}
-		{{user.lastname}}</h1>
+		{{user.firstname |capitalize }}
+		{{user.lastname |capitalize}}</h1>
 
-	<div class="shadow p-3 mb-5 bg-body rounded col-3 position-absolute top-50 start-50 translate-middle">
+	<div class="shadow p-3 mb-5 bg-body rounded col-4 position-absolute top-50 start-50 translate-middle">
 
-		<div class="container col-8 mt-5 ">
+		<div class="container col-10 mt-5 ">
 			<div class="row">
 				{% form_theme form 'bootstrap_5_layout.html.twig' %}
 				{{ form_start(form) }}
 				{{ form_widget(form) }}
-				<button class="btn btn-success">{{ button_label|default('Enregistrer') }}</button>
-				<a href="{{ path('app_utilisateurs') }}" class="btn btn-primary">Retour</a>
+				<div class="container justify-content-center">
+					<button class="btn bouton">{{ button_label|default('Enregistrer') }}</button>
+
+					<a href="{{ path('app_utilisateurs') }}" class="btn btn-primary">Retour</a>
+				</div>
 				{{ form_end(form) }}
 
 			</div>

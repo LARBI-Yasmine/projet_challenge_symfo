@@ -15,7 +15,6 @@
 						<tr>
 
 
-							<th scope="col">ID</th>
 							<th scope="col">Nom</th>
 							<th scope="col">
 								Prénom</th>
@@ -31,7 +30,7 @@
 						{% for user in pagination %}
 							<tr>
 
-								<td>{{ user.id}}</td>
+
 								<td>{{ user.firstname}}</td>
 								<td>{{ user.lastname }}</td>
 								<td>{{ user.email }}</td>
@@ -67,18 +66,21 @@
 								<td colspan="3">Aucun utilisateur trouvé</td>
 							</tr>
 						{% endfor %}
+
 					</tbody>
-				</tr>
-			</tbody>
-		</tbody>
-	</table>
 
-	<div class="row ">
-		<div class="justify-content-center d-flex">
-			{{knp_pagination_render(pagination)}}
+				</table>
 
+				<div class="row ">
+					<div class="justify-content-center d-flex">
+						{{knp_pagination_render(pagination)}}
+
+					</div>
+				</div>
+
+
+			</div>
 		</div>
 	</div>
 
-
-</div></div></div>{% endblock %}
+{% endblock %}
