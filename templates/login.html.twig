@@ -6,13 +6,13 @@
 
 {% block body %}
 	{% if error %}
-		<div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		<div class=" container alert alert-danger col-5 justify-content-center d-flex ">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
 
 
-	<h1 class="h3 font-weight-normal healthh mt-4 mb-4 ">Connexion</h1>
+	<h2 class="font-weight-normal healthh mt-5 mb-4 ">Connexion</h1>
 
-	<div class="container  mb-3 shadow p-3 mb-5 bg-body rounded col-5 position-absolute top-50 start-50 translate-middle">
+	<div class="container  mb-3 shadow p-3  bg-body rounded col-5 position-absolute top-50 start-50 translate-middle">
 		<div class="row">
 			<div class="col-12">
 
@@ -36,16 +36,17 @@
 
 
 					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-					<button class="btn bouton mt-4 mb-3  justify-content-center d-flex " type="submit">
-						Se connecter
-					</button>
+					<div class="container justify-content-center d-flex">
+						<button class="btn bouton mt-4 mb-3" type="submit">
+							Se connecter
+						</button>
+					</div>
 
 				</form>
 
 			</div>
-			<div>
+			<div class="container justify-content-center d-flex">
 				<a href="/register" style="color:#0C8B82;">Vous n'êtes pas inscrit ? Inscrivez-vous</a>
 			</div>
-
 
 		{% endblock %}
