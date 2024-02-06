@@ -3,10 +3,25 @@ body {
 }
 
 .bouton {
-
     background-color: #0C8B82;
-
     color: white;
+}
+
+/* Styling for when button is active (clicked) */
+.bouton:active {
+    background-color: #0C8B82 !important;
+    color: white !important;
+}
+
+.bouton:hover {
+    background-color: #0C8B82 !important;
+    color: white !important;
+}
+
+/* Styling for when button has focus */
+.bouton:focus {
+    background-color: #0C8B82 !important;
+    color: white !important;
 }
 
 .boutonn {
