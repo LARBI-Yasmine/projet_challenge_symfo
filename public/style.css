@@ -3,8 +3,8 @@ body {
 }
 
 .bouton {
-    background-color: #0C8B82;
-    color: white;
+    background-color: #0C8B82 !important;
+    color: white !important;
 }
 
 /* Styling for when button is active (clicked) */
@@ -29,7 +29,7 @@ body {
     background-color: white;
 }
 
-.health {
+.health-style {
     color: #0C8B82;
     font-weight: bold;
 }
@@ -43,10 +43,7 @@ body {
     color: #0C8B82;
 }
 
-.ecriture {
-    color: #0C8B82;
 
-}
 
 .aa {
     border-radius: 1px;
