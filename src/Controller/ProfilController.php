@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserEditType;
-use App\Form\UserPasswordType;
+
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,28 +23,18 @@ class ProfilController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager->flush();
-            return $this->redirectToRoute('app_home');
-        }
-
-        $passwordForm = $this->createForm(UserPasswordType::class, []);
-        $passwordForm->handleRequest($request);
-
-        if ($passwordForm->isSubmitted() && $passwordForm->isValid()) {
             $user->setPassword(
-                $userPasswordHasher->hashPassword(
-                    $user,
-                    $passwordForm->get('password')->getData()
-                )
-            );
+                $userPasswordHasher->hashPassword($user,$form->get('password')->getData()));
             $entityManager->flush();
             return $this->redirectToRoute('app_home');
         }
+
+        
 
         return $this->render('profil/index.html.twig', [
             'user' => $user,
             'form' => $form,
-            'passwordForm' => $passwordForm,
+            
         ]);
     }
 }

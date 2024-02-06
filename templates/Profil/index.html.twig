@@ -4,25 +4,45 @@
 {% endblock %}
 
 {% block body %}
-	<div class="my-profil">
-		<div class="container">
-			<h1 class="mt-5 mb-4">Editer mon profil</h1>
-			<div class="p-3 mb-5 bg-body rounded">
-				<div class="container col-8 mt-5 ">
-					<div class="row">
-						{% form_theme form 'bootstrap_5_layout.html.twig' %}
-						{{ form_start(form) }}
-						{{ form_widget(form) }}
-						<button class="btn btn-success mb-5">{{ button_label|default('Modifier') }}</button>
-						{{ form_end(form) }}
-						{% form_theme passwordForm 'bootstrap_5_layout.html.twig' %}
-						{{ form_start(passwordForm) }}
-						{{ form_widget(passwordForm) }}
-						<button class="btn btn-success">{{ button_label|default('Modifier') }}</button>
-						{{ form_end(passwordForm) }}
-					</div>
-				</div>
+
+
+	<h3 class="font-weight-normal healthh mt-3">Modifier mon profil</h3>
+
+	<section>
+		<div class="container col-8 shadow p-3 mb-5 bg-body rounded  position-absolute top-50 start-50 translate-middle">
+			<div class="row">
+				{{ form_start(form) }}
+				{{ form_widget(form) }}
+
+				<button class="btn bouton mb-5">{{ button_label|default('Modifier') }}</button>
+				{{ form_end(form) }}
 			</div>
 		</div>
-	</div>
+	</section>
+
+	{#
+					<div class="container">
+				
+						<div class="p-3 mb-5 bg-body rounded">
+							<div class="container col-8 mt-5 ">
+								<div class="row">
+									{% form_theme form 'bootstrap_5_layout.html.twig' %}
+									{{ form_start(form) }}
+									{{ form_widget(form) }}
+									<button class="btn bouton mb-5">{{ button_label|default('Modifier') }}</button>
+									{{ form_end(form) }}
+				
+				
+									{% form_theme passwordForm 'bootstrap_5_layout.html.twig' %}
+									{{ form_start(passwordForm) }}
+									{{ form_widget(passwordForm) }}
+									<button class="btn bouton">{{ button_label|default('Modifier') }}</button>
+									{{ form_end(passwordForm) }}
+								</div>
+							</div>
+						</div>
+					</div>
+					#}
+
+
 {% endblock %}

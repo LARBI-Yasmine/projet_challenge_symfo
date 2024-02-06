@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class UserEditType extends AbstractType
 {
@@ -32,7 +33,10 @@ class UserEditType extends AbstractType
                 
             ],
             ])
-        ->add('email',EmailType::class) ;   
+        ->add('email',EmailType::class) 
+        ->add('password', PasswordType::class, [
+            'label' => 'Le mot de passe'
+        ]); 
         
     }
 
