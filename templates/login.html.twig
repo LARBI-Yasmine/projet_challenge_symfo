@@ -11,42 +11,43 @@
 
 
 	<h2 class="font-weight-normal healthh mt-5 mb-4 ">Connexion</h1>
-
-	<div class="container  mb-3 shadow p-3  bg-body rounded col-5 position-absolute top-50 start-50 translate-middle">
-		<div class="row">
-			<div class="col-12">
-
-
-				<form method="post">
-
-					<div class="mt-5 mb-3">
-						<label class="mb-2">
-							E-mail
-						</label>
-						<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-					</div>
+	<section>
+		<div class="container  mb-3 shadow p-3  bg-body rounded col-5 position-absolute top-50 start-50 translate-middle">
+			<div class="row">
+				<div class="col-12">
 
 
-					<div class="mt-4 mb-3">
-						<label class="mb-3">
-							Mot de passe
-						</label>
-						<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-					</div>
+					<form method="post">
+
+						<div class="mt-5 mb-3">
+							<label class="mb-2">
+								E-mail
+							</label>
+							<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+						</div>
 
 
-					<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-					<div class="container justify-content-center d-flex">
-						<button class="btn bouton mt-4 mb-3" type="submit">
-							Se connecter
-						</button>
-					</div>
+						<div class="mt-4 mb-3">
+							<label class="mb-3">
+								Mot de passe
+							</label>
+							<input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+						</div>
 
-				</form>
 
-			</div>
-			<div class="container justify-content-center d-flex">
-				<a href="/register" style="color:#0C8B82;">Vous n'êtes pas inscrit ? Inscrivez-vous</a>
-			</div>
+						<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+						<div class="container justify-content-center d-flex">
+							<button class="btn bouton mt-4 mb-3" type="submit">
+								Se connecter
+							</button>
+						</div>
+
+					</form>
+
+				</div>
+				<div class="container justify-content-center d-flex">
+					<a href="/register" style="color:#0C8B82;">Vous n'êtes pas inscrit ? Inscrivez-vous</a>
+				</div>
+			</section>
 
 		{% endblock %}
