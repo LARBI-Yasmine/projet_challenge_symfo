@@ -15,18 +15,11 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
-
-
 #[Route('/admin')]
 
 
 class AdminController extends AbstractController
 {
-
-
-
-
-
 
     #[Route('/utilisateurs', name: 'app_utilisateurs')]
     public function listUsers(UserRepository  $users,Request $request, PaginatorInterface $paginator): Response

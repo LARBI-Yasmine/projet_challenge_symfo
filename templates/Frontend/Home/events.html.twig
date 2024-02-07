@@ -30,32 +30,35 @@
 										<span>
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewbox="0 0 16 16">
 												<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3
-																																																																																																																																																																																																																																																																								   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+																																																																																																																																																																																																																																																																																																																																																																																																																																				   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
 											</svg>
 										</span>
 										{{booking.event.location}}
 									</p>
 
-									<p>Déscription
-									</p>
+
 								</h6>
 
 								{% if booking.status == 1 %}
-									<p class="vert">Confirmé</p>
-								{% else %}
-									<p style="color: red;">Annulé</p>
-								{% endif %}
-								<div>
-									<form action="/eventWithdraw" method="POST">
-										<button class="btn btn-success justify-content-center d-flex">
-											Se désister
-											<input type="hidden" name="token" value="{{ csrf_token('withdraw' ~ booking.id) }}">
-											<input type="hidden" name="id" value="{{ booking.id }}">
-										</button>
-									</form>
+									<p style="font-weight:bold;" class="vert">
+										Participation Confirmée</p>
+									<div>
+										<form action="/eventWithdraw" method="POST">
+											<button class="btn btn-danger justify-content-center d-flex">
+												Se désister
+												<input type="hidden" name="token" value="{{ csrf_token('withdraw' ~ booking.id) }}">
+												<input type="hidden" name="id" value="{{ booking.id }}">
+											</button>
+										</form>
 
-									<a href="{{ path('app_all_events') }}" class="btn btn-primary">retour</a>
-								</div>
+										<a href="{{ path('app_all_events') }}" class="btn btn-primary">retour</a>
+									</div>
+								{% else %}
+									<p style="color: red;font-weight:bold;">Participation Annulée</p>
+
+
+								{% endif %}
+
 
 							</div>
 						</div>

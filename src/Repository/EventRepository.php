@@ -49,7 +49,7 @@ class EventRepository extends ServiceEntityRepository
     public function paginationQueryByUser($user)
     {
         return $this->createQueryBuilder('e')
-            ->where('e.createdBy = :user')
+            ->where('e.user= :user')
             ->setParameter('user', $user)
             ->orderBy('e.id', 'ASC')
             ->getQuery();
@@ -57,16 +57,28 @@ class EventRepository extends ServiceEntityRepository
 
 
 
-     // fonction pour afficher les events créé par un user
+    // fonction pour afficher les events créé par un user
 
      public function findEventsCreatedByUser(User $user)
      {
          return $this->createQueryBuilder('e')
-             ->andWhere('e.createdBy = :user')
+             ->Where('e.user = :user.id')
              ->setParameter('user', $user)
              ->getQuery()
              ->getResult();
      }
+
+
+//   public function findEventsCreatedByUser(User $user)
+//       {
+//         return $this->createQueryBuilder('e')
+//         ->andWhere('u.createdat = :user')
+//         ->setParameter('user', $user)
+//         ->getQuery()
+//         ->getResult();
+//       }
+
+    
 
 //    public function findOneBySomeField($value): ?Event
 //    {

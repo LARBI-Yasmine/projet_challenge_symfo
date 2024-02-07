@@ -7,7 +7,7 @@
 {% block body %}
 
 
-	<h1 class="h1 font-weight-normal healthh mt-2 mb-3">Les évènements</h1>
+	<h2 class="font-weight-normal healthh mt-2 mb-3">Les évènements</h2>
 
 	<div class=" container">
 		<div class="row">
@@ -40,35 +40,13 @@
 									<span>
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewbox="0 0 16 16">
 											<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3
-																																																																																																																																																																																																																																																																																																																																																																																																																																																	   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																									   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
 										</svg>
 									</span>
 									{{event.location}}
 								</p>
 								<p class="card-text">
 									Description: l'évenement consiste en
-									<a data-bs-toggle="modal" data-bs-target="#exampleModal">
-										Lire la suite
-									</a>
-
-
-									<div class="modal" tabindex="-1">
-										<div class="modal-dialog">
-											<div class="modal-content">
-												<div class="modal-header">
-													<h5 class="modal-title"><img src="{{ asset ('images/conference.jpg') }}" class="card-img-top  " alt="..."></h5>
-													<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-												</div>
-												<div class="modal-body">
-													<p>Modal body text goes here.</p>
-												</div>
-												<div class="modal-footer">
-													<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-													<button type="button" class="btn btn-primary">Save changes</button>
-												</div>
-											</div>
-										</div>
-									</div>
 
 
 								</p>
@@ -81,6 +59,12 @@
 				</div>
 			{% endfor %}
 
+		</div>
+		<div class="row ">
+			<div class="justify-content-center d-flex">
+				{{knp_pagination_render(pagination)}}
+
+			</div>
 		</div>
 	</div>
 

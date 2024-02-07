@@ -6,7 +6,7 @@
 
 {% block body %}
 	{% if error %}
-		<div class=" container alert alert-danger col-5 justify-content-center d-flex ">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+		<div class=" container alert alert-danger mt-3 col-5 justify-content-center d-flex ">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
 
 
@@ -49,5 +49,6 @@
 					<a href="/register" style="color:#0C8B82;">Vous n'êtes pas inscrit ? Inscrivez-vous</a>
 				</div>
 			</section>
+
 
 		{% endblock %}

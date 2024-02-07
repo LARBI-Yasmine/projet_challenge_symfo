@@ -25,8 +25,7 @@ class Event
     #[ORM\Column(length: 255)]
     private ?string $location = null;
 
-    #[ORM\Column]
-    private ?bool $participate = null;
+   
 
     #[ORM\ManyToOne(inversedBy: 'events')]
     private ?User $user = null;

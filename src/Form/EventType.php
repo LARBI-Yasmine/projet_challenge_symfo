@@ -27,12 +27,7 @@ class EventType extends AbstractType
                     'placeholder' => 'Conférence de ...'
                 ]
             ])
-            ->add('categories', EntityType::class, [
-                'class' => Category::class,
-                'choice_label' => 'titre',
-                'multiple' => true,
-                'expanded' => true
-            ])
+           
             ->add('date', DateTimeType::class, [
                 'label' => 'Date d\'evenement', 
                 'required' => true,
@@ -53,6 +48,13 @@ class EventType extends AbstractType
                     'placeholder' => 'description...',
                     'type'=>'text'
                 ]
+            ])
+            ->add('categories', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'titre',
+                'multiple' => true,
+                'expanded' => true,
+          
             ]);
     }
 
