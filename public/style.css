@@ -2,6 +2,13 @@ body {
     min-height: 80vh;
 }
 
+.bout:active {
+    background-color: #0C8B82 !important;
+    color: white !important;
+}
+
+
+
 .bouton {
     background-color: #0C8B82 !important;
     color: white !important;
@@ -12,6 +19,8 @@ body {
     background-color: #0C8B82 !important;
     color: white !important;
 }
+
+
 
 .bouton:hover {
     background-color: #0C8B82 !important;

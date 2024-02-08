@@ -14,7 +14,7 @@
 
 
 	<section>
-		<h1 class="h1 font-weight-normal healthh mt-2 mb-3">Evènements à venir</h1>
+		<h1 class="font-weight-normal healthh mt-2 mb-3">Evènements à venir</h1>
 		<div class=" container">
 			<div class="row">
 				{% for event in events %}
@@ -22,7 +22,7 @@
 						<div class="card shadow p-3 mb-5 bg-body rounded" style="width: 100%;height:95%;display: flex;">
 							<img src="{{ asset ('images/conference.jpg') }}" class="card-img-top  " alt="image" height='200'>
 							<div class="card-body">
-								<h2 class="card-title font-weight-normal ecriture">{{ event.name }}</h2>
+								<h2 class="card-title font-weight-normal vert">{{ event.name }}</h2>
 
 								<h6>
 
@@ -42,7 +42,7 @@
 										<span>
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewbox="0 0 16 16">
 												<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3
-																																																																																																																																																																																																																																																																																																																																																																																																																																																   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																								   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
 											</svg>
 										</span>
 										{{event.location}}
@@ -55,7 +55,7 @@
 								</h6>
 								{% if (app.user) %}
 
-									{% if is_granted('ROLE_USER')  %}
+									{% if is_granted('ROLE_USER') or is_granted('ROLE_EDITOR') %}
 										<form action="event-participate" method="POST">
 											<button class="btn bouton">
 												Participer
@@ -77,7 +77,7 @@
 	</section>
 
 	{% if not app.user %}
-		<section class="mt-5">
+		<section class="mt-2">
 			<h5 style="text-align:center;">Si vous souhaitez participer à un évènement, vous devez vous
 				<a href="/register" class="vert">Inscrire
 				</a>
@@ -86,7 +86,7 @@
 	{% endif %}
 	<footer>
 		<div class="container  shadow p-3 bg-body">
-			<p class="vert" style="text-align: center;">Copyright HEALTH EVENT 2024</p>
+			<h6 class="vert" style="text-align: center;">Copyright HEALTH EVENT 2024</h6>
 		</div>
 	</footer>
 

@@ -31,7 +31,7 @@ class HomeController extends AbstractController
     }
 
 
-    //tous les evenements
+    // //tous les evenements
     #[Route('/allEvents', name: 'app_all_events')]
     public function showAllEvents(): Response
     {

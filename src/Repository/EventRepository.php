@@ -69,14 +69,6 @@ class EventRepository extends ServiceEntityRepository
      }
 
 
-//   public function findEventsCreatedByUser(User $user)
-//       {
-//         return $this->createQueryBuilder('e')
-//         ->andWhere('u.createdat = :user')
-//         ->setParameter('user', $user)
-//         ->getQuery()
-//         ->getResult();
-//       }
 
     
 
