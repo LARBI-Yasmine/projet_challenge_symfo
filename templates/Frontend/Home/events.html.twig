@@ -12,8 +12,9 @@
 				{% for booking in bookings %}
 					<div class="col-md-6">
 						<div class="card shadow p-3 mb-5 bg-body rounded" style="width: 100%;height:95%;display: flex;">
+							<img src="{{ asset ('images/conference.jpg') }}" class="card-img-top  " alt="...">
 							<div class="card-body">
-								<h2 class="card-title font-weight-normal ecriture">{{ booking.event.name }}</h2>
+								<h2 class="card-title font-weight-normal vert">{{ booking.event.name }}</h2>
 								<h6>
 									<p class="card-text">
 										<span>
@@ -30,7 +31,7 @@
 										<span>
 											<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewbox="0 0 16 16">
 												<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3
-																																																																																																																																																																																																																																																																																																																																																																																																																																																   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																				   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
 											</svg>
 										</span>
 										{{booking.event.location}}
@@ -42,16 +43,21 @@
 								{% if booking.status == 1 %}
 									<p style="font-weight:bold;" class="vert">
 										Participation Confirmée</p>
-									<div>
-										<form action="/eventWithdraw" method="POST">
-											<button class="btn btn-danger justify-content-center d-flex">
-												Se désister
-												<input type="hidden" name="token" value="{{ csrf_token('withdraw' ~ booking.id) }}">
-												<input type="hidden" name="id" value="{{ booking.id }}">
-											</button>
-										</form>
+									<div class="row">
+										<div class="col-4">
+											<form class="justify-content-center d-flex" action="/eventWithdraw" method="POST">
+												<button class="btn btn-danger justify-content-center d-flex">
+													Se désister
+													<input type="hidden" name="token" value="{{ csrf_token('withdraw' ~ booking.id) }}">
+													<input type="hidden" name="id" value="{{ booking.id }}">
+												</button>
+											</form>
+										</div>
+										<div class="col-4">
+											<a href="{{ path('app_all_events') }}" class="btn btn-primary">retour</a>
+										</div>
 
-										<a href="{{ path('app_all_events') }}" class="btn btn-primary">retour</a>
+
 									</div>
 								{% else %}
 									<p style="color: red;font-weight:bold;">Participation Annulée</p>

@@ -74,12 +74,12 @@ class HomeController extends AbstractController
                     ->setUser($user)
                     ->setEvent($event);
                 $this->entityManager->persist($booking);
+                $this->entityManager->flush();
+
                 return $this->redirectToRoute('app_events');
             }
         }
-
         $this->addFlash('error', 'Token CSRF invalide');
-
         return $this->redirectToRoute('app_events');
     }
     

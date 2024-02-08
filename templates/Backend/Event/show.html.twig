@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block body %}
-	<h1 class="h3 font-weight-normal healthh mt-5 ">Evenement :
+	<h1 class="h3 font-weight-normal healthh mt-5 ">
 		{{event.name}}</h1>
 
 
@@ -34,6 +34,10 @@
 						<tr>
 							<th>Location</th>
 							<td>{{ event.location }}</td>
+						</tr>
+						<tr>
+							<th>Description:</th>
+							<td>{{ event.description }}</td>
 						</tr>
 
 					</tbody>

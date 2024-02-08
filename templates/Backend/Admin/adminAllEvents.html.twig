@@ -17,7 +17,7 @@
 
 						<img src="{{ asset ('images/conference.jpg') }}" class="card-img-top  " alt="...">
 						<div class="card-body">
-							<h2 class="card-title font-weight-normal ecriture">{{ event.name }}</h2>
+							<h2 class="card-title font-weight-normal vert">{{ event.name }}</h2>
 
 							<h6>
 
@@ -40,28 +40,30 @@
 									<span>
 										<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt-fill" viewbox="0 0 16 16">
 											<path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3
-																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																						   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																   3 0 1 1 0-6 3 3 0 0 1 0 6"/>
 										</svg>
 									</span>
 									{{event.location}}
 								</p>
 								<p class="card-text">
-									Description: l'évenement consiste en
+									Description:
+									{{event.description}}
 
 
 								</p>
 							</h6>
 							{% if (app.user) %}
 
-								{% if is_granted('ROLE_EDITOR') %}
-									<form action="event-participate" method="POST">
-										<button class="btn bouton">
+								{% if not is_granted('ROLE_ADMIN') %}
+									<form class="justify-content-center d-flex mt-4" action="event-participate" method="POST">
+										<button class="btn bouton ">
 											Participer
 										</button>
 										<input type="hidden" name="token" value="{{ csrf_token('participate' ~ event.id) }}">
 										<input type="hidden" name="id" value="{{ event.id }}">
 									</form>
 								{% endif %}
+
 
 							{% endif %}
 
